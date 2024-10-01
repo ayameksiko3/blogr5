@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelompok 5</title>
+    <meta name="description" content="Blog Kelompok 5">
+    <link rel="icon" type="image/png" href="img/limalogo.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<style>
+    /* Styling custom untuk slider */
+    .swiper-container {
+      border-radius: 1rem;
+      overflow: hidden; /* Menghindari gambar keluar dari border */
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .card {
+            background: #f5f5f5;
+            padding: 1em;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: transform 0.3s ease;
+        }
+
+        .card-img {
+            background-color: #006aff;
+            height: 200px; /* Set height fixed */
+            width: 100%;
+            border-radius: .5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card-img:hover {
+            transform: translateY(-10px); /* Menggeser gambar sedikit ke atas */
+            box-shadow: rgba(0, 106, 255, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+        }
+
+        .card-info {
+            padding-top: 10px;
+        }
+
+        .text-title {
+            font-weight: 900;
+            font-size: 1.5em;
+        }
+
+        .text-body {
+            font-size: 1em;
+            padding-bottom: 10px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .card-button {
+    padding: .5em;
+    cursor: pointer;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Mulai dari kiri */
+    width: 100%;
+    height: 100%;
+    background-color: #006aff; /* Warna latar belakang saat hover */
+    transition: left 0.5s ease; /* Durasi dan jenis transisi */
+    z-index: 0; /* Di belakang teks */
+}
+
+.card-button:hover::before {
+    left: 0; /* Bergerak ke posisi normal saat hover */
+}
+
+.card-button span {
+    position: relative; /* Agar teks tetap di depan */
+    z-index: 1; /* Di depan elemen ::before */
+}
+
+    </style>
+    <style>
+        .custom-button {
+    display: flex;
+    height: 3em;
+    width: 200px; /* Anda bisa mengubah lebar tombol sesuai kebutuhan */
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: #ffffff;
+}
+
+.prev-btn > svg {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+}
+
+.next-btn > svg {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+}
+
+.prev-btn:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+}
+
+.next-btn:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(5px); /* Memindahkan ikon ke kanan saat di-hover */
+}
+
+.custom-button:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+}
+
+.opacity-75 {
+    opacity: 0.75; /* Opasitas tombol sebelumnya */
+}
+.teks {
+    color: #006aff;
+}
+.custom-rounded {
+    border-top-left-radius: 50px; /* Ganti 50px dengan nilai yang kamu inginkan */
+    border-top-right-radius: 50px; /* Ganti 50px dengan nilai yang kamu inginkan */
+    border-bottom-left-radius: 15px; /* Atau ukuran yang kamu inginkan */
+    border-bottom-right-radius: 15px; /* Atau ukuran yang kamu inginkan */
+}
+    </style>
+    
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full bg-white bg-opacity-80 backdrop-blur-md shadow-lg z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="text-3xl font-bold text-gray-800">Kelompok 5</div>
+
+        <!-- Navbar -->
+        <nav class="relative">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-gray-800 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+            <!-- Menu Links -->
+            <ul id="nav-menu" class="hidden lg:flex space-x-8">
+                <li><a href="#" class="nav-link text-gray-800 hover:text-gray-200 transition duration-300">Home</a></li>
+                <li class="relative group">
+                  <a href="#artikel" class="nav-link text-gray-800 hover:text-gray-200 transition duration-300">Blog</a>
+              </li>
+                <li><a href="#about" class="nav-link text-gray-800 hover:text-gray-200 transition duration-300">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-lg mt-2 p-4 hidden">
+        <ul class="space-y-4">
+            <li><a href="#" class="block text-gray-800 hover:bg-gray-100 p-2 rounded">Home</a></li>
+            <li class="relative">
+              <a href="#artikel" class="block text-gray-800 hover:bg-gray-100 p-2 rounded">Blog</a>
+            </li>
+            <li><a href="#about" class="block text-gray-800 hover:bg-gray-100 p-2 rounded">About</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- Main Content with Hero Video Section -->
+<section class="relative flex flex-col items-center justify-center px-4 pt-20 mb-0">
+    <article class="max-w-3xl text-center relative z-10 mb-0">
+        <!-- Article Header -->
+        <header class="mb-2 text-left">
+            <span class="text-yellow-400 uppercase tracking-wider">Artikel</span>
+            <h1 class="text-3xl md:text-5xl font-bold mt-2 text-gray-900 leading-tight pb-4">
+                Konfrontasi Dengan Malaysia         
+            </h1>
+            <p class="text-gray-500 mt-2 text-sm"></p>
+        </header>
+    </article>
+</section>
+
+<section class="relative">
+    <div class="absolute inset-0 bg-white"></div>
+    <div class="absolute inset-0 top-1/2 bg-gradient-to-b from-indigo-100 to-white custom-rounded opacity-70"></div>
+    <article class="max-w-3xl mx-auto text-center relative z-10 mb-0 px-4 md:px-0">
+        <!-- Article Header -->
+        <iframe class="w-full h-48 md:h-96 mt-2 rounded-lg shadow-lg transition-transform transform relative z-10"
+            src="https://www.youtube.com/embed/NdkyxaKi6LI"
+            title="YouTube video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </article>
+</section>
+
+
+      
+<section class="container mx-auto mt-12 fade-in px-8">
+    <p class="text-lg leading-relaxed text-gray-700 fade-in">
+        Konfrontasi dengan Malaysia adalah konflik bersenjata antara Indonesia dan Malaysia yang berlangsung dari tahun 1963 hingga 1966. Konflik ini dipicu oleh penolakan Indonesia, di bawah kepemimpinan Presiden Soekarno, terhadap pembentukan Federasi Malaysia, yang dianggap sebagai bentuk neo-kolonialisme oleh Inggris di kawasan Asia Tenggara. Konfrontasi ini melibatkan serangan militer, infiltrasi, dan tindakan gerilya oleh Indonesia terhadap Malaysia, terutama di wilayah perbatasan Kalimantan. Konflik ini berakhir setelah penyelesaian diplomatik pada tahun 1966, ketika kedua negara menandatangani Perjanjian Jakarta.
+    </p>
+
+    <div class="border-l-4 border-indigo-500 pl-4 italic text-gray-600 my-6">
+        Konfrontasi ini menjadi salah satu babak penting dalam sejarah hubungan diplomatik Indonesia dan Malaysia, dengan dampak besar terhadap stabilitas politik di Asia Tenggara pada saat itu.
+    </div>
+
+    <p class="text-lg leading-relaxed mt-6 fade-in">
+        Di bawah kepemimpinan Presiden Soekarno, Indonesia memandang pembentukan Federasi Malaysia sebagai upaya neo-kolonialisme yang didukung oleh Inggris, yang berupaya memperkuat pengaruhnya di kawasan. Sebagai bentuk penolakan, Indonesia melakukan berbagai aksi militer yang melibatkan infiltrasi dan serangan gerilya, terutama di wilayah Kalimantan yang berbatasan langsung dengan Malaysia.
+    </p>
+
+    <h2 class="text-2xl font-semibold text-gray-800 mt-8">Pemicu dan Aksi Militer</h2>
+    <p class="text-lg leading-relaxed mt-6 fade-in">
+        Konflik ini dipicu oleh pembentukan Federasi Malaysia, yang dianggap oleh Soekarno sebagai ancaman bagi kedaulatan dan stabilitas kawasan. Indonesia menilai bahwa pembentukan Malaysia merupakan strategi neo-kolonialisme yang dirancang oleh Inggris. Tindakan ini kemudian memicu infiltrasi militer, bentrokan di perbatasan, dan serangan gerilya yang menimbulkan ketegangan tinggi di antara kedua negara.
+    </p>
+
+    <div class="bg-gradient-to-b from-indigo-100 to-white p-4 rounded-lg mt-6">
+        <h3 class="text-xl font-semibold text-gray-900">Poin-Poin Penting Konfrontasi Indonesia-Malaysia</h3>
+        <ul class="list-disc list-inside text-gray-700 mt-2">
+            <li class="py-2"><strong>Periode Konflik:</strong> Terjadi antara tahun 1963 hingga 1966.</li>
+            <li class="py-2"><strong>Pemicu Konflik:</strong> Penolakan Indonesia di bawah Presiden Soekarno terhadap pembentukan Federasi Malaysia.</li>
+            <li class="py-2"><strong>Aksi Militer:</strong> Terjadi infiltrasi, serangan gerilya, dan bentrokan di wilayah perbatasan, terutama di Kalimantan.</li>
+            <li class="py-2"><strong>Dampak:</strong> Ketegangan politik yang tinggi antara Indonesia dan Malaysia serta kerugian di sektor militer dan sipil.</li>
+            <li class="py-2"><strong>Akhir Konflik:</strong> Berakhir pada tahun 1966 setelah upaya diplomatik dan perubahan kepemimpinan di Indonesia, dengan penandatanganan Perjanjian Jakarta.</li>
+            <li class="py-2"><strong>Dampak Jangka Panjang:</strong> Membuka jalan bagi perbaikan hubungan bilateral kedua negara.</li>
+        </ul>
+    </div>
+
+    <h2 class="text-2xl font-semibold text-gray-800 mt-8">Akhir Konflik dan Perjanjian Jakarta</h2>
+    <p class="text-lg leading-relaxed mt-6 fade-in">
+        Setelah berlangsung selama tiga tahun, konfrontasi ini berakhir pada tahun 1966 melalui jalur diplomatik. Perubahan kepemimpinan di Indonesia, dengan turunnya Soekarno dan beralihnya kekuasaan ke Soeharto, turut berkontribusi dalam meredakan ketegangan. Kedua negara akhirnya menandatangani Perjanjian Jakarta, yang mengakhiri permusuhan antara Indonesia dan Malaysia dan membuka jalan bagi hubungan bilateral yang lebih baik.
+    </p>
+
+    <p class="text-lg leading-relaxed mt-6 fade-in">
+        Meskipun konfrontasi ini menimbulkan kerugian, baik di sektor militer maupun sipil, penyelesaiannya melalui diplomasi menciptakan fondasi yang lebih stabil bagi hubungan Indonesia-Malaysia di masa mendatang. 
+    </p>
+</section>
+
+
+    <section class="mt-20 fade-in pb-4 px-4">
+        <h2 class="text-4xl font-bold text-center mb-5">Navigasi Artikel</h2>
+        <div class="flex justify-center space-x-6">
+            <!-- Tombol Artikel Sebelumnya -->
+            <button class="flex items-center opacity-75 hover:opacity-100 custom-button prev-btn">
+                <a href="artikel2.html">
+                    <span>Artikel Sebelumnya</span>
+                    </a>
+            </button>
+            
+            <!-- Tombol Artikel Selanjutnya -->
+            <button class="flex items-center custom-button next-btn">
+                <a href="artikel4.html">
+                <span>Artikel Selanjutnya</span>
+                </a>
+            </button>
+        </div>
+    </section>
+
+        <!-- Footer -->
+        <footer class="">
+            <div class="max-w-3xl mx-auto py-4">
+                    <ul class="text-lg flex items-center justify-center flex-col md:flex-row transition-all duration-500 border-b border-gray-200">
+                    </ul>
+
+                    <span class="text-lg text-gray-500 text-center block">©<a>Kelompok 5</a> 2024, All rights reserved.</span>
+            </div>
+    </footer>
+</main>
+
+    <!-- Script for Mobile Menu Toggle -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden'); // Toggles the 'hidden' class to show/hide the menu
+        });
+    });
+
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+    });
+</script>
+</body>
+</html>

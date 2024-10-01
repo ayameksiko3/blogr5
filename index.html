@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelompok 5</title>
+    <meta name="description" content="Blog Kelompok 5">
+    <link rel="icon" type="image/png" href="img/limalogo.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<style>
+    /* Styling custom untuk slider */
+    .swiper-container {
+      border-radius: 1rem;
+      overflow: hidden; /* Menghindari gambar keluar dari border */
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .card {
+            background: #f5f5f5;
+            padding: 1em;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: transform 0.3s ease;
+        }
+
+        .card-img {
+            background-color: #006aff;
+            height: 200px; /* Set height fixed */
+            width: 100%;
+            border-radius: .5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card-img:hover {
+            transform: translateY(-10px); /* Menggeser gambar sedikit ke atas */
+            box-shadow: rgba(0, 106, 255, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+        }
+
+        .card-info {
+            padding-top: 10px;
+        }
+
+        .text-title {
+            font-weight: 900;
+            font-size: 1.5em;
+        }
+
+        .text-body {
+            font-size: 1em;
+            padding-bottom: 10px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .card-button {
+    padding: .5em;
+    cursor: pointer;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Mulai dari kiri */
+    width: 100%;
+    height: 100%;
+    background-color: #006aff; /* Warna latar belakang saat hover */
+    transition: left 0.5s ease; /* Durasi dan jenis transisi */
+    z-index: 0; /* Di belakang teks */
+}
+
+.card-button:hover::before {
+    left: 0; /* Bergerak ke posisi normal saat hover */
+}
+
+.card-button span {
+    position: relative; /* Agar teks tetap di depan */
+    z-index: 1; /* Di depan elemen ::before */
+}
+
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full bg-white bg-opacity-80 backdrop-blur-md shadow-lg z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="text-3xl font-bold text-gray-800">Kelompok 5</div>
+
+        <!-- Navbar -->
+        <nav class="relative">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-gray-800 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+            <!-- Menu Links -->
+            <ul id="nav-menu" class="hidden lg:flex space-x-8">
+                <li><a href="#" class="nav-link text-gray-800 hover:text-gray-200 transition duration-300">Home</a></li>
+                <li class="relative group">
+                  <a href="#artikel" class="nav-link text-gray-800 hover:text-gray-200 transition duration-300">Blog</a>
+              </li>
+                <li><a href="#about" class="nav-link text-gray-800 hover:text-gray-200 transition duration-300">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden bg-white bg-opacity-80 backdrop-blur-md shadow-lg rounded-lg mt-2 p-4 hidden">
+        <ul class="space-y-4">
+            <li><a href="#" class="block text-gray-800 hover:bg-gray-100 p-2 rounded">Home</a></li>
+            <li class="relative">
+              <a href="#artikel" class="block text-gray-800 hover:bg-gray-100 p-2 rounded">Blog</a>
+            </li>
+            <li><a href="#about" class="block text-gray-800 hover:bg-gray-100 p-2 rounded">About</a></li>
+        </ul>
+    </div>
+</header>
+    
+
+<body class="bg-gray-0">
+    <div class="container mx-auto min-h-screen px-4 pt-20 flex flex-col lg:flex-row items-center">
+      <!-- Bagian Kiri: Teks Artikel -->
+      <div class="lg:w-1/2 w-full lg:pr-8 mb-8 lg:mb-0">
+        <h1 class="text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+          Perkembangan Politik Dan Ekonomi Masa Demokrasi Terpimpin 
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Selamat datang di blog kami, tempat berbagi artikel menarik dan inspiratif.</p>     
+      </div>
+  
+      <!-- Bagian Kanan: Slider Gambar Artikel -->
+      <div class="lg:w-1/2 w-full">
+        <div class="swiper-container rounded-lg">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <img src="img/foto.jpg" alt="Gambar Blog 1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+
+    <section id="artikel" class="container mx-auto min-h-screen px-4 py-4 ">
+      <h2 class="text-3xl font-bold text-center mb-8">Artikel</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="card">
+          <img src="img/artikel1.jpg" class="card-img" alt="Product 4">
+          <div class="card-info">
+              <p class="text-title">Dinamika politik menuju demokrasi terpimpin.</p>
+          </div>
+          <div class="card-footer flex justify-between items-center">
+            <a href="artikel1.html" class="card-button flex items-center">
+                <span class="hover-underline-animation text-gray-800 uppercase tracking-widest">Baca artikel</span>
+            </a>
+        </div>
+      </div>
+
+          <!-- Kartu produk ke-2 -->
+          <div class="card">
+            <img src="img/artikel2.jpg" class="card-img" alt="Product 4">
+            <div class="card-info">
+                <p class="text-title">Perjuangan pembebasan irian barat.</p>
+            </div>
+            <div class="card-footer flex justify-between items-center">
+              <a href="artikel1.html" class="card-button flex items-center">
+                  <span class="hover-underline-animation text-gray-800 uppercase tracking-widest">Baca artikel</span>
+              </a>
+          </div>
+        </div>
+
+          <!-- Kartu produk ke-3 -->
+          <div class="card">
+            <img src="img/artikel3.jpg" class="card-img" alt="Product 4">
+            <div class="card-info">
+                <p class="text-title">Konfrontasi dengan malaysia.</p>
+            </div>
+            <div class="card-footer flex justify-between items-center">
+              <a href="artikel1.html" class="card-button flex items-center">
+                  <span class="hover-underline-animation text-gray-800 uppercase tracking-widest">Baca artikel</span>
+              </a>
+          </div>
+        </div>
+
+          <!-- Kartu produk ke-4 -->
+          <div class="card">
+            <img src="img/artikel4.jpg" class="card-img" alt="Product 4">
+            <div class="card-info">
+                <p class="text-title">Perkembangan ekonomi pada masa demokrasi terpimpin.</p>
+            </div>
+            <div class="card-footer flex justify-between items-center">
+                <a href="artikel4.html" class="card-button flex items-center">
+                    <span class="hover-underline-animation text-gray-800 uppercase tracking-widest">Baca artikel</span>
+                </a>
+            </div>
+        </div>             
+      </section>
+      
+
+<!-- Footer -->
+<footer class="">
+  <div class="max-w-3xl mx-auto py-4">
+          <ul class="text-lg flex items-center justify-center flex-col md:flex-row transition-all duration-500 border-b border-gray-200">
+          </ul>
+
+          <span class="text-lg text-gray-500 text-center block">©<a>Kelompok 5</a> 2024, All rights reserved.</span>
+  </div>
+</footer>
+                                          
+
+    <!-- Script for Mobile Menu Toggle -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden'); // Toggles the 'hidden' class to show/hide the menu
+        });
+    });
+
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+    });
+</script>
+</body>
+</html>
